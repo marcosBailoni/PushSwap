@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maralves <maralves@student.42.fr>          +#+  +:+       +#+         #
+#    By: marcos <marcos@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/25 15:28:39 by maralves          #+#    #+#              #
-#    Updated: 2025/08/06 16:12:40 by maralves         ###   ########.fr        #
+#    Updated: 2025/11/27 10:39:27 by marcos           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,17 @@ SRC = ft_memchr.c \
       ft_toupper.c \
       ft_isalpha.c \
       ft_putchar_fd.c \
+      ft_putchar.c \
       ft_strlcpy.c \
       ft_isdigit.c \
       ft_putnbr_fd.c \
       ft_strmapi.c \
       ft_isprint.c \
       ft_putstr_fd.c \
+      ft_putstr.c \
       ft_strncmp.c \
       ft_itoa.c \
+      ft_atoll.c \
       ft_split.c \
       ft_strnstr.c\
 	ft_isascii.c\

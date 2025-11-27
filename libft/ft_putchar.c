@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 19:51:36 by marcos            #+#    #+#             */
-/*   Updated: 2025/11/27 10:20:25 by marcos           ###   ########.fr       */
+/*   Created: 2025/11/27 10:22:29 by marcos            #+#    #+#             */
+/*   Updated: 2025/11/27 10:22:46 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#include "libft.h"
 
-#include "libft/libft.h"
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdint.h>
-
-
-typedef struct node_number
+void	ft_putchar(char c)
 {
-	int					value;
-	struct node_number	*next;
-}					n_number;
-
-#endif
+	write(1, &c, 1);
+}

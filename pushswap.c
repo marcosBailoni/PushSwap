@@ -6,12 +6,12 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:35:11 by marcos            #+#    #+#             */
-/*   Updated: 2025/11/26 23:26:05 by marcos           ###   ########.fr       */
+/*   Updated: 2025/11/27 10:30:58 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include "libft.h"
+#include <stdio.h>
 
 int	print_error()
 {
@@ -60,38 +60,96 @@ int	argv_index_is_number(char **list, int *count)
 	return (i);
 }
 
+int	argv_index_is_int(char **list)
+{
+	int	i;
+	int	dummy;
+	long long	number;
 
+	i = 0;
+	number = 0;
+	dummy = 0;
+	if (!argv_index_is_number(list, &dummy))
+		return (0);
+	while (list[i])
+	{
+		number = ft_atoll(list[i]);
+		if (number < -2147483648 || number > 2147483647)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	input_validate(int argc, char **argv){
 	int		index_argv;
-	char	*content_argv_index;
+	char	**content_argv_index;
 	int		count_numbers;
 
 	index_argv = 1;
 	count_numbers = 0;
 	if (argc < 2)
-		return (print_error);
+		return (0);
 	while (argv[index_argv])
 	{
 		content_argv_index = ft_split(argv[index_argv], ' ');
-		if (argv_index_is_number(content_argv_index, &count_numbers) && argv_index_is_int(content_argv_index))
+		if (argv_index_is_number(content_argv_index, &count_numbers)
+			&& argv_index_is_int(content_argv_index))
 		{
 			ft_free_split(content_argv_index);
 			index_argv++;
-		}				
+		}
 		else 
 		{
 			ft_free_split(content_argv_index);
-			return (0)
+			return (0);
 		}
 	}
 	return (count_numbers);	
 }
 
+// int	main(int argc, char **argv)
+// {
+// 	if (!input_validate)
+// 		return (print_error);
+// 	else 
+// 	{
+		
+// 	}
 
+// 	return (0);
+// }
 
-void	ft_push_swap(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	if (validar numeros retornar 0)
-		return (0);
+	int		count_numbers;
+	int		index_argv;
+	char	**split_argv;
+	int		i;
+	// int		j;
+
+	count_numbers = input_validate(argc, argv);
+	if (!count_numbers)
+	{
+		print_error();
+		return (1);
+	}
+
+	printf("Total numbers: %d\n", count_numbers);
+
+	index_argv = 1;
+	while (argv[index_argv])
+	{
+		split_argv = ft_split(argv[index_argv], ' ');
+		i = 0;
+		while (split_argv[i])
+		{
+			printf("%s\n", split_argv[i]);
+			i++;
+		}
+		ft_free_split(split_argv);
+		index_argv++;
+	}
+
+	return (0);
 }
