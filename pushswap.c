@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:35:11 by marcos            #+#    #+#             */
-/*   Updated: 2025/11/27 10:30:58 by marcos           ###   ########.fr       */
+/*   Updated: 2025/11/28 22:35:11 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_free_split(char **vect)
 	free (vect);
 }
 
+// valida se e numbero
 int	argv_index_is_number(char **list, int *count)
 {
 	int	i;
@@ -60,6 +61,7 @@ int	argv_index_is_number(char **list, int *count)
 	return (i);
 }
 
+//valida se é numero inteiro
 int	argv_index_is_int(char **list)
 {
 	int	i;
@@ -80,6 +82,67 @@ int	argv_index_is_int(char **list)
 	}
 	return (1);
 }
+// cria vetor de int
+int	*create_vect_numbers(char **argv, int total_numbers)
+{
+	int i;
+	int j;
+	int x;
+	int *numbers;
+	char **content_argv;
+
+	i = 1;
+	x = 0;
+	numbers = malloc(sizeof(int) * total_numbers);
+	if (!numbers)
+		return (NULL);
+	while (argv[i])
+	{
+		j = 0;
+		content_argv = ft_split(argv[i], ' ');
+		if (!content_argv)
+		{
+			free(numbers);
+			return (NULL);
+		}
+		while (content_argv[j])
+		{
+			numbers[x] = ft_atoi(content_argv[j]);
+			j++;
+			x++;
+		}
+		ft_free_split(content_argv);
+		i++;
+	}
+	return (numbers);
+}
+
+//valida se tem algum numero duplicado
+int	is_dup(int *vect, int total_numbers)
+{
+	int i;
+	int	j;
+	
+	i = 0;
+	while (i < total_numbers - 1)
+	{
+		j = i + 1;
+		while (j < total_numbers)
+		{
+			if (vect[i] == vect[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+// ate o momento, usa as funcoes acimae valida a entrada
+// primeiro se tem pelo menos um argumento pra testar
+// depois valida se e numero e inteiro
+//agora vai validar se tem duplicata
+// implementar parte que valida se esta ordenado e se tem mais de um numero
 
 int	input_validate(int argc, char **argv){
 	int		index_argv;
@@ -107,6 +170,8 @@ int	input_validate(int argc, char **argv){
 	}
 	return (count_numbers);	
 }
+
+
 
 // int	main(int argc, char **argv)
 // {
