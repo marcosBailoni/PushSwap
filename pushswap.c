@@ -6,7 +6,7 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 22:35:11 by marcos            #+#    #+#             */
-/*   Updated: 2025/11/28 22:37:42 by marcos           ###   ########.fr       */
+/*   Updated: 2025/11/30 00:06:02 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int	is_dup(int *vect, int total_numbers)
 //agora vai validar se tem duplicata
 // implementar parte que valida se esta ordenado e se tem mais de um numero
 
-int	input_validate(int argc, char **argv){
+int	is_valid_number(int argc, char **argv){
 	int		index_argv;
 	char	**content_argv_index;
 	int		count_numbers;
@@ -168,7 +168,16 @@ int	input_validate(int argc, char **argv){
 			return (0);
 		}
 	}
-	return (count_numbers);	
+	return (count_numbers);
+}
+
+int input_validate_dups(int count_numbers);
+{
+	int *numbers;
+
+	numbers = malloc(sizeof(int) * total_numbers);
+	if (!numbers)
+		return (NULL);
 }
 
 
@@ -193,7 +202,7 @@ int	main(int argc, char **argv)
 	int		i;
 	// int		j;
 
-	count_numbers = input_validate(argc, argv);
+	count_numbers = is_valid_number(argc, argv);
 	if (!count_numbers)
 	{
 		print_error();
