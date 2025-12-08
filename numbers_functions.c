@@ -6,13 +6,13 @@
 /*   By: marcos <marcos@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 00:08:18 by marcos            #+#    #+#             */
-/*   Updated: 2025/11/30 00:23:24 by marcos           ###   ########.fr       */
+/*   Updated: 2025/12/02 20:49:31 by marcos           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	argv_index_is_number(char **list, int *count)
+int	argv_index_is_number(char **list, int *total_numbers)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ int	argv_index_is_number(char **list, int *count)
 		}
 		i++;
 	}
-	*count += i;
+	*total_numbers += i;
 	return (i);
 }
 
@@ -53,6 +53,8 @@ int	argv_index_is_int(char **list)
 		return (0);
 	while (list[i])
 	{
+		if (ft_strlen(list[i]) > 18)
+			return (0);
 		number = ft_atoll(list[i]);
 		if (number < -2147483648 || number > 2147483647)
 			return (0);
@@ -61,7 +63,7 @@ int	argv_index_is_int(char **list)
 	return (1);
 }
 
-int	fill_vect_numbers(char **argv, int total_numbers, int *numbers)
+int	fill_vect_numbers(char **argv, int *numbers)
 {
 	int i;
 	int j;
@@ -89,7 +91,7 @@ int	fill_vect_numbers(char **argv, int total_numbers, int *numbers)
 }
 
 //valida se tem algum numero duplicado
-int	is_dup(int *vect, int total_numbers)
+int	has_dup(int *numbers, int total_numbers)
 {
 	int i;
 	int	j;
@@ -100,11 +102,11 @@ int	is_dup(int *vect, int total_numbers)
 		j = i + 1;
 		while (j < total_numbers)
 		{
-			if (vect[i] == vect[j])
-				return (0);
+			if (numbers[i] == numbers[j])
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
